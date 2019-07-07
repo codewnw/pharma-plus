@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.pharmaplus.model.User;
+import com.pharmaplus.service.LoginService;
+import com.pharmaplus.service.LoginServiceImpl;
 import com.pharmaplus.service.UserService;
 import com.pharmaplus.service.UserServiceImpl;
 
@@ -16,10 +18,13 @@ import com.pharmaplus.service.UserServiceImpl;
 public class UserServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	private UserService userService;
-	
+	private final UserService userService;
+
+	private final LoginService loginService;
+
 	public UserServlet() {
 		userService = new UserServiceImpl();
+		loginService = new LoginServiceImpl();
 	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -36,10 +41,26 @@ public class UserServlet extends HttpServlet {
 			throws ServletException, IOException {
 		String url = request.getRequestURI();
 		if (url.contains("save")) {
-			String name = request.getParameter("name");
-			User user = new User();
-			user.setName(name);
-			userService.save(user);
+			String email = request.getParameter("email");
+			char[] password = request.getParameter("password").toCharArray();
+
+			if (loginService.save(email, password, "user")) {
+				String name = request.getParameter("name");
+				String mobile = request.getParameter("mobile");
+				int age = Integer.parseInt(request.getParameter("age"));
+				String gender = request.getParameter("gender");
+
+				User user = new User();
+				user.setEmail(email);
+				user.setName(name);
+				user.setAge(age);
+				user.setGender(gender);
+				user.setMobile(mobile);
+
+				userService.save(user);
+
+			}
+
 		} else if (url.contains("update")) {
 			// run update login
 

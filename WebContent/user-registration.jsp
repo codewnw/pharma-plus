@@ -39,6 +39,20 @@
 						placeholder="Password">
 				</div>
 			</div>
+
+			<div class="form-row">
+				<div class="form-group col-md-6">
+					<label for="inputEmail4">Age</label> <input type="number"
+						name="age" value="0" class="form-control" id="inputEmail4"
+						placeholder="Age">
+				</div>
+				<div class="form-group col-md-6">
+					<label for="inputPassword4">Gender</label> <input type="radio"
+						name="gender" value="Male" /> &nbsp; Male &nbsp;&nbsp; <input
+						type="radio" name="gender" value="Female" /> &nbsp; Female
+				</div>
+			</div>
+
 			<div class="form-group">
 				<label for="inputAddress">Address</label> <input type="text"
 					name="address1" class="form-control" id="inputAddress"
