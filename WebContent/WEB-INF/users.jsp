@@ -34,7 +34,7 @@
 						<td>${user.email}</td>
 						<td>${user.age}</td>
 						<td>${user.gender}</td>
-						<td><a href="#" class="btn btn-info">View</a>/<a href="delete?email=${user.email}"
+						<td><a href="view?email=${user.email}" class="btn btn-info">View</a>/<a href="delete?email=${user.email}"
 							class="btn btn-danger">Delete</a></td>
 					</tr>
 				</c:forEach>

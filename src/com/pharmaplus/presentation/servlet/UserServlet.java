@@ -15,7 +15,7 @@ import com.pharmaplus.service.LoginServiceImpl;
 import com.pharmaplus.service.UserService;
 import com.pharmaplus.service.UserServiceImpl;
 
-@WebServlet({ "/users/all", "/users/get", "/users/update", "/users/delete", "/users/save" })
+@WebServlet({ "/users/all", "/users/view", "/users/update", "/users/delete", "/users/save" })
 public class UserServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -31,8 +31,11 @@ public class UserServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		String url = request.getRequestURI();
-		if (url.contains("get")) {
-			// run save logic
+		if (url.contains("view")) {
+			String email = request.getParameter("email");
+			User user = userService.get(email);
+			request.setAttribute("user", user);
+			request.getRequestDispatcher("../WEB-INF/user.jsp").forward(request, response);
 		} else if (url.contains("all")) {
 			List<User> users = userService.getAllUsers();
 			request.setAttribute("users", users);

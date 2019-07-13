@@ -10,9 +10,9 @@ public interface UserService {
 
 	void update(User user);
 
-	void delete(String id);
+	void delete(String email);
 
-	User get(String id);
+	User get(String email);
 
 	List<User> getAllUsers();
 }

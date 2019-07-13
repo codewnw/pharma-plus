@@ -50,9 +50,19 @@ public class UserDaoImpl implements UserDao {
 	}
 
 	@Override
-	public User get(String id) {
-		// TODO Auto-generated method stub
-		return null;
+	public User get(String email) {
+		User user = null;
+		String USER_QUERY = "SELECT * FROM PP_USER WHERE EMAIL = ?";
+		try (Connection con = DbUtil.getConnection(); PreparedStatement pstmt = con.prepareStatement(USER_QUERY)) {
+			pstmt.setString(1, email);
+			ResultSet rs = pstmt.executeQuery();
+			while (rs.next()) {
+				user = userRecordToUserEntityMaper(rs);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return user;
 	}
 
 	@Override
