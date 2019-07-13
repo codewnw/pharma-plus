@@ -10,12 +10,14 @@ public class TableCreator {
 		createUserTable();
 		createLoginTable();
 		createMedicineTable();
+		createSupplierTable();
 	}
 
 	public void dropTables() {
 		dropUserTable();
 		dropLoginTable();
 		dropMedicineTable();
+		dropSupplierTable();
 	}
 
 	private void dropMedicineTable() {
@@ -48,6 +50,17 @@ public class TableCreator {
 	private void createMedicineTable() {
 
 	}
+	
+	private void dropSupplierTable() {
+		try (Connection con = DbUtil.getConnection(); Statement stmt = con.createStatement()) {
+			stmt.execute("DROP TABLE PP_SUPPLIER");
+			System.out.println(getClass().getSimpleName() + " >> PP_SUPPLIER table droped.");
+		} catch (SQLException e) {
+			System.out.println(getClass().getSimpleName() + " >> PP_SUPPLIER table does not exists.");
+			e.printStackTrace();
+		}
+
+	}
 
 	private void createUserTable() {
 		StringBuilder CREATE_USER_TABLE_SQL = new StringBuilder();
@@ -73,6 +86,22 @@ public class TableCreator {
 			System.out.println(getClass().getSimpleName() + " >> PP_LOGIN table created.");
 		} catch (SQLException e) {
 			System.out.println(getClass().getSimpleName() + " >> PP_LOGIN table already exists.");
+			e.printStackTrace();
+		}
+	}
+	
+	private void createSupplierTable() {
+		StringBuilder CREATE_SUPPLIER_TABLE_QUERY = new StringBuilder();
+		CREATE_SUPPLIER_TABLE_QUERY.append("CREATE TABLE PP_SUPPLIER(")
+				.append("ID INT,")
+				.append("SUPPLIER_NAME VARCHAR(250),")
+				.append("SHORT_NAME VARCHAR(6),").append("ACTIVE_FLAG INT").append(")");
+
+		try (Connection con = DbUtil.getConnection(); Statement stmt = con.createStatement()) {
+			stmt.execute(CREATE_SUPPLIER_TABLE_QUERY.toString());
+			System.out.println(getClass().getSimpleName() + " >> PP_SUPPLIER table created.");
+		} catch (SQLException e) {
+			System.out.println(getClass().getSimpleName() + " >> PP_SUPPLIER table already exists.");
 			e.printStackTrace();
 		}
 	}
