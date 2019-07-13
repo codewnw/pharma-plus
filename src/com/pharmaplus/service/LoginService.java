@@ -4,4 +4,6 @@ public interface LoginService {
 	boolean save(String userName, char[] password, String userType);
 
 	String getUserType(String userName);
+	
+	boolean checkLogin(String userName, String password);
 }

@@ -9,6 +9,8 @@ public class User {
 	private int age;
 
 	private String gender;
+	
+	private String mobile;
 
 	@Override
 	public String toString() {
@@ -47,8 +49,6 @@ public class User {
 	public void setMobile(String mobile) {
 		this.mobile = mobile;
 	}
-
-	private String mobile;
 
 	public String getName() {
 		return name;

@@ -1,6 +1,7 @@
 package com.pharmaplus.presentation.servlet;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -14,7 +15,7 @@ import com.pharmaplus.service.LoginServiceImpl;
 import com.pharmaplus.service.UserService;
 import com.pharmaplus.service.UserServiceImpl;
 
-@WebServlet({ "/users", "/users/get", "/users/update", "/users/delete", "/users/save" })
+@WebServlet({ "/users/all", "/users/get", "/users/update", "/users/delete", "/users/save" })
 public class UserServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -32,6 +33,16 @@ public class UserServlet extends HttpServlet {
 		String url = request.getRequestURI();
 		if (url.contains("get")) {
 			// run save logic
+		} else if (url.contains("all")) {
+			List<User> users = userService.getAllUsers();
+			request.setAttribute("users", users);
+			request.getRequestDispatcher("../WEB-INF/users.jsp").forward(request, response);
+		} else if (url.contains("delete")) {
+			String email = request.getParameter("email");
+			userService.delete(email);
+			List<User> users = userService.getAllUsers();
+			request.setAttribute("users", users);
+			request.getRequestDispatcher("../WEB-INF/users.jsp").forward(request, response);
 		} else {
 			response.sendRedirect("index.jsp");
 		}

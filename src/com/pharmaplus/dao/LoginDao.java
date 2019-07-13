@@ -5,4 +5,6 @@ public interface LoginDao {
 	boolean save(String userName, char[] password, String userType);
 
 	String getUserType(String userName);
+	
+	boolean checkLogin(String userName, String password);
 }

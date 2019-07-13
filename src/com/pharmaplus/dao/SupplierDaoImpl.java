@@ -15,10 +15,10 @@ public class SupplierDaoImpl implements SupplierDao {
 
 		try (Connection con = DbUtil.getConnection();
 				PreparedStatement pstmt = con.prepareStatement(INSERT_SUPPLIER_QUERY)) {
-			pstmt.setInt(1, supplier.getId());
-			pstmt.setString(2, supplier.getName());
-			pstmt.setString(3, supplier.getShortname());
-			pstmt.setInt(4, supplier.getActiveflag());
+//			pstmt.setInt(1, supplier.getId());
+//			pstmt.setString(2, supplier.getName());
+//			pstmt.setString(3, supplier.getShortname());
+//			pstmt.setInt(4, supplier.getActiveflag());
 			
 
 			pstmt.executeUpdate();

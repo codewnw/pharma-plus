@@ -7,8 +7,8 @@ import java.sql.Statement;
 public class TableCreator {
 
 	public void createTables() {
-		createUserTable();
 		createLoginTable();
+		createUserTable();
 		createMedicineTable();
 		createSupplierTable();
 	}
@@ -50,7 +50,7 @@ public class TableCreator {
 	private void createMedicineTable() {
 
 	}
-	
+
 	private void dropSupplierTable() {
 		try (Connection con = DbUtil.getConnection(); Statement stmt = con.createStatement()) {
 			stmt.execute("DROP TABLE PP_SUPPLIER");
@@ -83,19 +83,19 @@ public class TableCreator {
 
 		try (Connection con = DbUtil.getConnection(); Statement stmt = con.createStatement()) {
 			stmt.execute(CREAte_LOGIN_TABLE_QUERY.toString());
+			stmt.executeUpdate("INSERT INTO PP_LOGIN VALUES('admin', 'admin', 'admin')");
 			System.out.println(getClass().getSimpleName() + " >> PP_LOGIN table created.");
 		} catch (SQLException e) {
 			System.out.println(getClass().getSimpleName() + " >> PP_LOGIN table already exists.");
 			e.printStackTrace();
 		}
 	}
-	
+
 	private void createSupplierTable() {
 		StringBuilder CREATE_SUPPLIER_TABLE_QUERY = new StringBuilder();
-		CREATE_SUPPLIER_TABLE_QUERY.append("CREATE TABLE PP_SUPPLIER(")
-				.append("ID INT,")
-				.append("SUPPLIER_NAME VARCHAR(250),")
-				.append("SHORT_NAME VARCHAR(6),").append("ACTIVE_FLAG INT").append(")");
+		CREATE_SUPPLIER_TABLE_QUERY.append("CREATE TABLE PP_SUPPLIER(").append("ID INT,")
+				.append("SUPPLIER_NAME VARCHAR(250),").append("SHORT_NAME VARCHAR(6),").append("ACTIVE_FLAG INT")
+				.append(")");
 
 		try (Connection con = DbUtil.getConnection(); Statement stmt = con.createStatement()) {
 			stmt.execute(CREATE_SUPPLIER_TABLE_QUERY.toString());

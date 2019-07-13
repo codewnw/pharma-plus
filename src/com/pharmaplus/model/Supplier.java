@@ -2,18 +2,24 @@ package com.pharmaplus.model;
 
 public class Supplier {
 
-	private int id;
-	
+	private String email;
+
 	private String name;
 
-	private String shortname;
-	
-	private int activeflag;
-	// 0 for inactive and 1 for active
+	private String mobile;
 
-	@Override
-	public String toString() {
-		return "Supplier [id=" + id + ", name=" + name + ", shortname=" + shortname + ", activeflag=" +activeflag+ " ]";
+	private Address address;
+
+	public Supplier() {
+		super();
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
 	public String getName() {
@@ -24,30 +30,25 @@ public class Supplier {
 		this.name = name;
 	}
 
-	public int getId() {
-		return id;
+	public String getMobile() {
+		return mobile;
 	}
 
-	public void setId(int id) {
-		this.id = id;
+	public void setMobile(String mobile) {
+		this.mobile = mobile;
 	}
 
-	
-	public String getShortname() {
-		return shortname;
+	public Address getAddress() {
+		return address;
 	}
 
-	public void setShortname(String shortname) {
-		this.shortname = shortname;
+	public void setAddress(Address address) {
+		this.address = address;
 	}
 
-	
-	public int getActiveflag() {
-		return activeflag;
-	}
-
-	public void setActiveflag(int activeflag) {
-		this.activeflag = activeflag; 
+	@Override
+	public String toString() {
+		return "Supplier [email=" + email + ", name=" + name + ", mobile=" + mobile + ", address=" + address + "]";
 	}
 
 }

@@ -18,8 +18,12 @@ public class LoginServiceImpl implements LoginService {
 
 	@Override
 	public String getUserType(String userName) {
-		// TODO Auto-generated method stub
-		return null;
+		return loginDao.getUserType(userName);
+	}
+
+	@Override
+	public boolean checkLogin(String userName, String password) {
+		return loginDao.checkLogin(userName, password);
 	}
 
 }

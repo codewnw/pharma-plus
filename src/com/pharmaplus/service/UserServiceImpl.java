@@ -26,9 +26,8 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public void delete(String id) {
-		// TODO Auto-generated method stub
-
+	public void delete(String email) {
+		userDao.delete(email);
 	}
 
 	@Override
@@ -39,8 +38,7 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public List<User> getAllUsers() {
-		// TODO Auto-generated method stub
-		return null;
+		return userDao.getAllUsers();
 	}
 
 }
