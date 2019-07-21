@@ -40,8 +40,7 @@ public class SupplierServiceImpl implements SupplierService {
 
 	@Override
 	public List<Supplier> getAllSuppliers() {
-		// TODO Auto-generated method stub
-		return null;
+		return supplierDao.getAllSuppliers();
 	}
 
 }

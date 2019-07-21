@@ -93,9 +93,8 @@ public class TableCreator {
 
 	private void createSupplierTable() {
 		StringBuilder CREATE_SUPPLIER_TABLE_QUERY = new StringBuilder();
-		CREATE_SUPPLIER_TABLE_QUERY.append("CREATE TABLE PP_SUPPLIER(").append("ID INT,")
-				.append("SUPPLIER_NAME VARCHAR(250),").append("SHORT_NAME VARCHAR(6),").append("ACTIVE_FLAG INT")
-				.append(")");
+		CREATE_SUPPLIER_TABLE_QUERY.append("CREATE TABLE PP_SUPPLIER(").append("EMAIL VARCHAR(250),")
+				.append("NAME VARCHAR(250),").append("MOBILE VARCHAR(10),").append(")");
 
 		try (Connection con = DbUtil.getConnection(); Statement stmt = con.createStatement()) {
 			stmt.execute(CREATE_SUPPLIER_TABLE_QUERY.toString());

@@ -13,7 +13,7 @@
 <body>
 
 	<div class="container">
-		<form action="${pageContext.request.contextPath}/users/save"
+		<form action="${pageContext.request.contextPath}/suppliers/save"
 			method="post">
 			<div class="form-row">
 				<div class="form-group col-md-6">

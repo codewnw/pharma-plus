@@ -12,6 +12,7 @@
 </head>
 <body>
 <h1>Admin</h1>
-<a href="users/all" class="btn btn-primary">All Users</a>
+<a href="users/all" class="btn btn-primary">Users</a>
+<a href="suppliers/all" class="btn btn-primary">Supplies</a>
 </body>
 </html>

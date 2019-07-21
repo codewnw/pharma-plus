@@ -12,6 +12,7 @@
 </head>
 <body>
 	<a href="user-registration.jsp" class="btn btn-primary">Signup</a>
+	<a href="supplier-registration.jsp" class="btn btn-primary">Supplier Signup</a>
 	<a href="login.jsp" class="btn btn-primary">Login</a>
 </body>
 </html>
