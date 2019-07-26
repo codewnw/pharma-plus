@@ -27,15 +27,15 @@ public class SupplierServiceImpl implements SupplierService {
 	}
 
 	@Override
-	public void delete(String id) {
-		// TODO Auto-generated method stub
+	public void delete(String email) {
+		supplierDao.delete(email);
 
 	}
 
 	@Override
-	public Supplier get(String id) {
+	public Supplier get(String email) {
 		// TODO Auto-generated method stub
-		return null;
+		return supplierDao.get(email);
 	}
 
 	@Override

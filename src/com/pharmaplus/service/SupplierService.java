@@ -10,9 +10,9 @@ public interface SupplierService {
 
 	void update(Supplier supplier);
 
-	void delete(String id);
+	void delete(String email);
 
-	Supplier get(String id);
+	Supplier get(String email);
 
 	List<Supplier> getAllSuppliers();
 }

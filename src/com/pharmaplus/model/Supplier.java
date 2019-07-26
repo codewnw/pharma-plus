@@ -10,10 +10,12 @@ public class Supplier {
 
 	private Address address;
 
-	public Supplier() {
-		super();
+	@Override
+	public String toString() {
+		return "Supplier [email=" + email + ", name=" + name + ", mobile=" + mobile + ", address=" + address + "]";
+		
 	}
-
+	
 	public String getEmail() {
 		return email;
 	}
@@ -46,9 +48,6 @@ public class Supplier {
 		this.address = address;
 	}
 
-	@Override
-	public String toString() {
-		return "Supplier [email=" + email + ", name=" + name + ", mobile=" + mobile + ", address=" + address + "]";
-	}
+	
 
 }

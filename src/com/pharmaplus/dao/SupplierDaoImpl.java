@@ -37,15 +37,32 @@ public class SupplierDaoImpl implements SupplierDao {
 	}
 
 	@Override
-	public void delete(String id) {
-		// TODO Auto-generated method stub
+	public void delete(String email) {
+		String DELETE_SUPPLIER_QUERY = "DELETE FROM PP_SUPPLIER WHERE EMAIL = ?";
+		try (Connection con = DbUtil.getConnection();
+				PreparedStatement pstmt = con.prepareStatement(DELETE_SUPPLIER_QUERY)) {
+			pstmt.setString(1, email);
+			pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 
 	}
 
 	@Override
-	public Supplier get(String id) {
-		// TODO Auto-generated method stub
-		return null;
+	public Supplier get(String email) {
+		Supplier supplier = null;
+		String SUPPLIER_QUERY = "SELECT * FROM PP_SUPPLIER WHERE EMAIL = ?";
+		try (Connection con = DbUtil.getConnection(); PreparedStatement pstmt = con.prepareStatement(SUPPLIER_QUERY)) {
+			pstmt.setString(1, email);
+			ResultSet rs = pstmt.executeQuery();
+			while (rs.next()) {
+				supplier = userRecordToSupplierEntityMaper(rs);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return supplier;
 	}
 
 	@Override

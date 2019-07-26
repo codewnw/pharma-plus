@@ -18,17 +18,16 @@
 		<table class="table table-striped">
 			<thead>
 				<tr>
+					<th scope="col">Email</th>
 					<th scope="col">Name</th>
 					<th scope="col">Mobile</th>
-					<th scope="col">Email</th>
-					<th scope="col">Action</th>
 				</tr>
 			</thead>
 			<tbody>
 				<c:forEach var="supplier" items="${requestScope.suppliers}">
 					<tr>
-						<th scope="row">${supplier.name}</th>
-						<td>${supplier.mobile}</td>
+						<th scope="row">${supplier.mobile}</th>
+						<td>${supplier.name}</td>
 						<td>${supplier.email}</td>
 						<td><a href="view?email=${supplier.email}" class="btn btn-info">View</a>/<a href="delete?email=${supplier.email}"
 							class="btn btn-danger">Delete</a></td>

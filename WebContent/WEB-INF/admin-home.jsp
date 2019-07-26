@@ -13,6 +13,6 @@
 <body>
 <h1>Admin</h1>
 <a href="users/all" class="btn btn-primary">Users</a>
-<a href="suppliers/all" class="btn btn-primary">Supplies</a>
+<a href="suppliers/all" class="btn btn-primary">Suppliers</a>
 </body>
 </html>

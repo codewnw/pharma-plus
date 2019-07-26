@@ -18,7 +18,7 @@ import com.pharmaplus.service.LoginServiceImpl;
 import com.pharmaplus.service.SupplierService;
 import com.pharmaplus.service.SupplierServiceImpl;
 
-@WebServlet({ "/suppliers/all", "/suppliers/get", "/suppliers/update", "/suppliers/delete", "/suppliers/save" })
+@WebServlet({ "/suppliers/all", "/suppliers/view", "/suppliers/update", "/suppliers/delete", "/suppliers/save" })
 public class SupplierServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -34,12 +34,22 @@ public class SupplierServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		String url = request.getRequestURI();
-		if (url.contains("get")) {
-			// run save logic
-		} else if (url.contains("all")) {
+		if (url.contains("view")) {
+			String email = request.getParameter("email");
+			Supplier supplier = supplierService.get(email);
+			request.setAttribute("supplier", supplier);
+			System.out.println("hen");
+			request.getRequestDispatcher("../WEB-INF/supplier.jsp").forward(request, response); 
+		}else if (url.contains("all")) {
 			System.out.println("henlwknd");
 			List<Supplier> suppliers = supplierService.getAllSuppliers();
 			System.out.println(suppliers);
+			request.setAttribute("suppliers", suppliers);
+			request.getRequestDispatcher("../WEB-INF/suppliers.jsp").forward(request, response);
+		} else if (url.contains("delete")) {
+			String email = request.getParameter("email");
+			supplierService.delete(email);
+			List<Supplier> suppliers = supplierService.getAllSuppliers();
 			request.setAttribute("suppliers", suppliers);
 			request.getRequestDispatcher("../WEB-INF/suppliers.jsp").forward(request, response);
 		} else {
